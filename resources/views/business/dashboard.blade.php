@@ -9,12 +9,14 @@
         <div class="panel panel-default">
             <div class="panel-heading"><h3>Active Projects</h3></div>
             <div class="panel-body text-center">
-                <a href="#">Start posting projects!</a>
+                {!! Form::open(['route' => 'project.create', 'method' => 'get']) !!}
+                    {!! Form::submit ('Post a project', ['required', 'class' => 'btn btn-success']) !!}
+                {!! Form::close() !!}
             </div>
         </div>
 
         <div class="panel panel-default">
-            <div class="panel-heading"><h3>Manage Portfolio</h3></div>
+            <div class="panel-heading"><h3>Manage Business Info</h3></div>
             <div class="panel-body text-center">
             </div>
         </div>

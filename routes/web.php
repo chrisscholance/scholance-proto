@@ -17,3 +17,8 @@ Route::get('/', 'HomeController@index');
 Auth::routes();
 
 Route::get('dashboard', 'DashboardController@show')->middleware('auth')->name('dashboard');
+
+
+Route::get('project/create', 'ProjectController@create')->middleware('auth')->name('project.create');
+Route::post('project/store', 'ProjectController@store')->middleware('auth')->name('project.store');
+Route::any('project/show/{project}', 'ProjectController@show')->middleware('auth')->name('project.show');
