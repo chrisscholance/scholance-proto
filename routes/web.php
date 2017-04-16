@@ -11,10 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'HomeController@index');
 
-Route::get('/register', 'UserController@registrationPage')->name('registrationPage');
+//This covers the registration and login routes
+Auth::routes();
 
-Route::post('/register', 'UserController@registerUser')->name('registerUser');
+Route::get('dashboard', 'DashboardController@show')->middleware('auth')->name('dashboard');

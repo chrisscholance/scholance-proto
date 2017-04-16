@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
 			$table->string('user_type');
             $table->string('password');
-			$table->boolean('flagged');
+			$table->boolean('flagged')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

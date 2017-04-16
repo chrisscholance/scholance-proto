@@ -12,11 +12,30 @@
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Login</a></li>
-                <li><a href="#">Create an account</a></li>
-            </ul>
-        </div><!-- /.navbar-collapse -->
+        @if (Auth::check())
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{!! Auth::user()->first_name.' '.Auth::user()->last_name !!}! <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>{!! link_to_route('dashboard', 'Dashboard') !!}</li>
+                            <li role="separator" class="divider"></li>
+                            <li class="text-center">
+                                {!! Form::open(['route' => 'logout']) !!}
+                                    {!! Form::submit('Logout', ['class' => 'btn btn-default']) !!}
+                                {!! Form::close() !!}
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        @else
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>{!! link_to_route('login', 'Login') !!}</li>
+                    <li>{!! link_to_route('register', 'Create an account') !!}</li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        @endif
     </div><!-- /.container-fluid -->
 </nav>

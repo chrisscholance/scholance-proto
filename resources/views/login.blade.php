@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Home')
+@section('title', 'Login')
 
 @section('content')
 
@@ -16,7 +16,7 @@
         @endif
         <div class="form-horizontal col-md-6 col-md-offset-3">
             <h1>Create an Account</h1>
-            {!! Form::model($user, ['route' => 'registerUser']) !!}
+            {!! Form::open(['route' => 'registerUser']) !!}
 
             <div class="form-group">
 
