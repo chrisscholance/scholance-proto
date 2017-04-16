@@ -11,14 +11,14 @@
             <h2>For Students</h2>
             <p>Start working on projects!</p>
             <p class="text-center">
-                <a href="#" class="btn btn-default">Create an account</a>
+                {{link_to_route('registrationPage', 'Create an account', null, ['class' => 'btn btn-default'])}}
             </p>
         </div>
         <div class="col-md-6">
             <h2>For Businesses</h2>
             <p>Start posting projects!</p>
             <p class="text-center">
-                <a href="#" class="btn btn-default">Create an account</a>
+                {{link_to_route('registrationPage', 'Create an account', null, ['class' => 'btn btn-default'])}}
             </p>
         </div>
     </div>
