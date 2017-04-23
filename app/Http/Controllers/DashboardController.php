@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Project as Project;
 
 use App\User;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -17,10 +18,12 @@ class DashboardController extends BaseController
 
     public function show() {
 		$user = Auth::user();
+		$projects = Project::where('poster_id', $user->id)
+							->get();
 		if ($user->user_type == 'student') {
-			return view('student.dashboard', ['user' => $user]);
+			return view('student.dashboard', ['user' => $user, 'projects' => $projects]);
 		} elseif ($user->user_type == 'business') {
-			return view('business.dashboard', ['user' => $user]);
+			return view('business.dashboard', ['user' => $user, 'projects' => $projects]);
 		}
     }
 }

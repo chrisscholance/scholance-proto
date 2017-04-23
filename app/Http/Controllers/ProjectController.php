@@ -16,7 +16,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        //
+		$projects = Project::all();
+		return view('project.index', ['projects' => $projects]);
     }
 
     /**
@@ -41,7 +42,6 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
 		$this->validate($request, $this->rules());
-
 		$project = new Project();
 		$user = Auth::user();
 
@@ -75,7 +75,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+		return view('project.edit', ['project' => $project]);
     }
 
     /**
@@ -87,7 +87,15 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+		$this->validate($request, $this->rules());
+
+		$project->title = $request->title;
+		$project->summary = $request->summary;
+		$project->category = $request->category;
+		$project->description = $request->description;
+
+		$project->save();
+		return redirect()->route("project.show", ['project' => $project->id]);
     }
 
     /**
@@ -104,10 +112,10 @@ class ProjectController extends Controller
 	protected function rules()
 	{
 		return [
-			'title' => 'required|max:130',
-			'summary' => 'required',
+			'title' => 'required|min:10|max:130',
+			'summary' => 'required|min:10',
 			'category' => 'required',
-			'description' => 'required'
+			'description' => 'required|min:10'
 		];
 	}
 }

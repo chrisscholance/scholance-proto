@@ -69,7 +69,7 @@
 
                 </div>
 
-                <div class="form-group">
+                <div class="form-group hidden">
 
                     <div class="col-md-2 text-right">
                         {!! Form::checkbox('terms', 'true' ) !!}
